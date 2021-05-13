@@ -28,8 +28,6 @@ function App() {
     }
 
     setUsers([...users, newUser])
-
-    alert(JSON.stringify(users))
   }
 
 
@@ -37,7 +35,7 @@ function App() {
     <div className="App">
       <main>
         <AddNewUserForm onCreateUserFormSubmit={handleCreateUserFormSubmit}/>
-        <ListOfUsers />
+        <ListOfUsers users={users} />
       </main>
       <footer>
         <p>Made with 💙 &copy; 2021, Norbert Sándor</p>
