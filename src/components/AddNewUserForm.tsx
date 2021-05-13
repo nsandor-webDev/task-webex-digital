@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 interface Props {
-    
+    onCreateUserFormSubmit: (usersName: string, usersAddress: string, usersImage: Object) => void
 }
 
 
@@ -13,18 +13,9 @@ const AddNewUserForm = (props: Props) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
+                
+        props.onCreateUserFormSubmit(usersName,usersAddress,usersImage)
 
-/*         const newUser = {
-            id: Math.max(...users.map(s => s.id)) +1,
-            imgSrc: usersImage,
-            name: usersName,
-            address: usersAddress
-        }
-
-
-        setUsers([
-            ...users, newUser
-        ]) */
     }
 
     const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
