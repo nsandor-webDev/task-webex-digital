@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 interface Props {
     users: {
         id: number,
@@ -11,9 +9,9 @@ interface Props {
 }
 
 const ListOfUsers = (props: Props) => {
-
     const { users } = props
-
+    
+    //template
     return (
         <table className="user-list">
             <thead>

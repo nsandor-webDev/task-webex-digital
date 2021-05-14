@@ -1,34 +1,41 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 interface Props {
+    usersName: string,
+    usersAddress: string,
+    usersImage: Object,
+    onInputNameChange: (usersName: string) => void
+    onInputAddressChange: (usersAddress: string) => void
+    onInputImageChange: (usersImage: Object) => void
     onCreateUserFormSubmit: (usersName: string, usersAddress: string, usersImage: Object) => void
 }
 
 const AddNewUserForm = (props: Props) => {
-    const [usersName, setUsersName] = useState('');
-    const [usersAddress, setUsersAddress] = useState('');
-    const [usersImage, setUsersImage] = useState(Object);
+    const {usersName, usersAddress, usersImage} = props
     
+    // on submit
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-                
         props.onCreateUserFormSubmit(usersName,usersAddress,usersImage)
-
     }
 
+    // on change input - Name
     const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setUsersName(e.target.value)
+        props.onInputNameChange(e.target.value)
     }
 
+    // on change input - Address
     const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setUsersAddress(e.target.value)
+        props.onInputAddressChange(e.target.value)
     }
 
+    // on change input file - Image
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setUsersImage(URL.createObjectURL(e.target.files[0]))
+            props.onInputImageChange(URL.createObjectURL(e.target.files[0]))
         }
     }
 
+    // template
     return (
         <form onSubmit={handleSubmit}>
             <label>
