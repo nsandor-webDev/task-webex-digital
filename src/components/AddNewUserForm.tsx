@@ -3,14 +3,11 @@ interface Props {
     onCreateUserFormSubmit: (usersName: string, usersAddress: string, usersImage: Object) => void
 }
 
-
-
 const AddNewUserForm = (props: Props) => {
     const [usersName, setUsersName] = useState('');
     const [usersAddress, setUsersAddress] = useState('');
     const [usersImage, setUsersImage] = useState(Object);
     
-
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
                 
