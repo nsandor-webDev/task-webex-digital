@@ -1,11 +1,12 @@
 import React from 'react'
-import { useLocation, RouteComponentProps  } from 'react-router-dom';
+import { useLocation, RouteComponentProps, Link  } from 'react-router-dom';
 
 type StateType = {
     id: number,
     imgSrc: string,
     name: string,
-    address: string
+    address: string,
+    desc: string
 }
 
 type IndexProps = RouteComponentProps<{}, {}, StateType>;
@@ -19,8 +20,8 @@ const UsersPage: React.FC<IndexProps> = ({ location, history }) => {
             <img src={location.state.imgSrc} alt="" />
             <h1>{location.state.name}</h1>
             <p>{location.state.address}</p>
-            <p className="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quos laudantium natus amet hic perferendis enim inventore incidunt blanditiis, optio magnam aliquid laborum impedit officiis vero a in quaerat recusandae?</p>
-
+            <p className="desc">{location.state.desc}</p>
+            <Link to={ {pathname: "/"}}> Naspäť</Link>
         </div>
     )
 }

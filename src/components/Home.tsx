@@ -13,6 +13,7 @@ const Home = (props: Props) => {
     // state -> form
     const [usersName, setUsersName] = useState('');
     const [usersAddress, setUsersAddress] = useState('');
+    const [usersDesc, setUsersDesc] = useState('');
     const [usersImage, setUsersImage] = useState(Object);
 
     // state -> users + default user
@@ -21,7 +22,8 @@ const Home = (props: Props) => {
             id: 1,
             imgSrc: defaultAvatar,
             name: 'Norbert Sándor',
-            address: 'Bodona 3'
+            address: 'Bodona 3',
+            desc: 'Testovací používateľ'
         }
     ])
 
@@ -29,10 +31,11 @@ const Home = (props: Props) => {
     const handleCreateUserFormSubmit = (usersName: string, usersAddress: string, usersImage: Object) => {
         // new user
         const newUser = {
-        id: Math.max(...users.map(s => s.id)) +1,
-        imgSrc: usersImage.toString(),
-        name: usersName,
-        address: usersAddress
+            id: Math.max(...users.map(s => s.id)) +1,
+            imgSrc: usersImage.toString(),
+            name: usersName,
+            address: usersAddress,
+            desc: usersDesc
         }
 
         setUsers([...users, newUser])
@@ -46,6 +49,11 @@ const Home = (props: Props) => {
     // change INPUT ADDRESS 
     const handleAddressChange = (data: string) => {
         setUsersAddress(data)
+    }
+
+    // change INPUT DESCRIPTION 
+    const handleDescChange = (data: string) => {
+        setUsersDesc(data)
     }
 
     // change INPUT IMAGE - FILE 
@@ -62,6 +70,7 @@ const Home = (props: Props) => {
                 usersImage={usersImage}
                 onInputNameChange={handleNameChange}
                 onInputAddressChange={handleAddressChange}
+                onInputDescChange={handleDescChange}
                 onInputImageChange={handleImageChange}
                 onCreateUserFormSubmit={handleCreateUserFormSubmit}/>
             <ListOfUsers users={users} />

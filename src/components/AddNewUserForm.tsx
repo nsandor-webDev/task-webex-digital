@@ -5,6 +5,7 @@ interface Props {
     usersImage: Object,
     onInputNameChange: (usersName: string) => void
     onInputAddressChange: (usersAddress: string) => void
+    onInputDescChange: (usersAddress: string) => void
     onInputImageChange: (usersImage: Object) => void
     onCreateUserFormSubmit: (usersName: string, usersAddress: string, usersImage: Object) => void
 }
@@ -28,6 +29,11 @@ const AddNewUserForm = (props: Props) => {
         props.onInputAddressChange(e.target.value)
     }
 
+    // on change input - Descripion
+    const handleDescChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.onInputDescChange(e.target.value)
+    }
+
     // on change input file - Image
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
@@ -47,7 +53,7 @@ const AddNewUserForm = (props: Props) => {
                 <span>Adresa</span>
             </label> 
             <label>
-                <textarea id="description" placeholder="Popis"/>
+                <textarea id="description" placeholder="Popis" onChange={handleDescChange}/>
                 <span>Popis</span>
             </label> 
             <label htmlFor="avatarImage" className="file-upload-btn">
