@@ -5,12 +5,16 @@ interface Props {
         id: number,
         imgSrc: string,
         name: string,
-        address: string
+        address: string,
+        desc: string,
+        timestamp: Date
     }[]
 }
 
 const ListOfUsers = (props: Props) => {
     const { users } = props
+
+    const sorted = users.sort((d1, d2) => new Date(d2.timestamp).getTime() - new Date(d1.timestamp).getTime());
 
     //template
     return (
@@ -24,7 +28,7 @@ const ListOfUsers = (props: Props) => {
                 </tr>
             </thead>
             <tbody>  
-                   {users.map(user => (
+                   {sorted.map(user => (
                       
                             <tr key={user.id}>
                                 <td className="user-avatar"><img src={user.imgSrc.toString()} alt="Users Avatar" /></td>

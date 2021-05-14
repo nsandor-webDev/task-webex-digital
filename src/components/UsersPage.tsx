@@ -6,7 +6,8 @@ type StateType = {
     imgSrc: string,
     name: string,
     address: string,
-    desc: string
+    desc: string,
+    timestamp: Date
 }
 
 type IndexProps = RouteComponentProps<{}, {}, StateType>;
@@ -19,8 +20,11 @@ const UsersPage: React.FC<IndexProps> = ({ location, history }) => {
         <div>
             <img src={location.state.imgSrc} alt="" />
             <h1>{location.state.name}</h1>
-            <p>{location.state.address}</p>
-            <p className="desc">{location.state.desc}</p>
+            <p>Bytom: {location.state.address}</p>
+            <p className="desc"><b>Popis používateľa:</b> <br/> {location.state.desc}</p>
+            <p><small>Vytvorené: 
+                <i> {location.state.timestamp.getDate() + '.' + (location.state.timestamp.getMonth() + 1) + '.' + location.state.timestamp.getFullYear() + ' / ' + location.state.timestamp.getHours() + ':' + location.state.timestamp.getMinutes() + ':' + location.state.timestamp.getSeconds()}</i>
+            </small></p>
             <Link to={ {pathname: "/"}}> Naspäť</Link>
         </div>
     )
